@@ -1,0 +1,10 @@
+label {
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+}
+
+:disabled {
+    background-color: red !important;
+    border: 0px !important;
+}

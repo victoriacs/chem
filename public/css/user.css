@@ -1,0 +1,44 @@
+#user {
+    /* background: rgb(72,77,120);
+    background: linear-gradient(0deg, rgba(72,77,120,1) 0%, rgba(79,85,132,1) 25%, rgba(87,93,145,1) 50%, rgba(79,85,132,1) 75%, rgba(72,77,120,1) 100%); */
+}
+
+/* html {
+    background-color:  rgb(72,77,120) !important;
+}
+*/
+
+/* #formulas {
+    background-color: #195a62 !important;
+}  */
+
+p {
+    margin-bottom: 0 !important;
+    color: #57606a !important;
+}
+
+h4 {
+    margin-bottom: 0 !important;
+    color: #24292f !important;
+}
+
+/* .p {
+    margin-bottom: 0 !important;
+    color: #cecece;
+} */
+
+.material-icons {
+    color: #57606a;
+}
+
+#empty {
+    padding: 32px;
+}
+
+.hero {
+    /* margin-top: 0 !important; */
+}
+/* 
+#rowUser {
+    height: 82.5% !important;
+}  */
