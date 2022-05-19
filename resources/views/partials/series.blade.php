@@ -1,76 +1,35 @@
 <div class="card-body">
-    <h2>Metales</h2>
     <form>
+        <h2>Metales</h2>
+        @foreach ($seriesMetales as $item)
         <label class="form-check ps-5">
             <input name="series[]" class="form-check-input" type="checkbox"
-                   value="alcalino">
+                   value="{{ $item->serie_id }}">
             <span class="form-check-label">
-                Alcalino
+                {{ $item->nombre }}
             </span>
         </label>
-        <label class="form-check ps-5">
-            <input name="series[]" class="form-check-input" type="checkbox"
-                   value="aclalinoterreos">
-            <span class="form-check-label">
-                Alcalinotérreos
-            </span>
-        </label>
-        <label name="series[]" class="form-check ps-5">
-            <input class="form-check-input" type="checkbox"
-                   value="lantanidos">
-            <span class="form-check-label">
-                Lantánidos
-            </span>
-        </label>
-        <label name="series[]" class="form-check ps-5">
-            <input class="form-check-input" type="checkbox"
-                   value="actinido">
-            <span class="form-check-label">
-                Actínido
-            </span>
-        </label>
-        <label name="series[]" class="form-check ps-5">
-            <input class="form-check-input" type="checkbox"
-                   value="transicion">
-            <span class="form-check-label">
-                Metal de transición
-            </span>
-        </label>
-        <label name="series[]" class="form-check ps-5">
-            <input class="form-check-input" type="checkbox" value="bloque">
-            <span class="form-check-label">
-                Metal del bloque p
-            </span>
-        </label>
+        @endforeach
         <h2>Otros</h2>
+        @foreach ($seriesOtros as $item)
         <label class="form-check ps-5">
             <input name="series[]" class="form-check-input" type="checkbox"
-                   value="semimetal">
+                   value="{{ $item->serie_id }}">
             <span class="form-check-label">
-                Semimetal
+                {{ $item->nombre }}
             </span>
         </label>
-        <label class="form-check ps-5">
-            <input name="series[]" class="form-check-input" type="checkbox"
-                   value="desconocida">
-            <span class="form-check-label">
-                Desconocida
-            </span>
-        </label>
+        @endforeach
         <h2>No metal</h2>
-        <label class="form-check ps-5">
-            <input name="series[]" class="form-check-input" type="checkbox" value="otros">
-            <span class="form-check-label">
-                Otros no metales
-            </span>
-        </label>
+        @foreach ($seriesNoMetales as $item)
         <label class="form-check ps-5">
             <input name="series[]" class="form-check-input" type="checkbox"
-                   value="gas-noble">
+                   value="{{ $item->serie_id }}">
             <span class="form-check-label">
-                Gases nobles
+                {{ $item->nombre }}
             </span>
         </label>
+        @endforeach
         <div class="d-flex justify-content-center">
             <button class="btn btn-primary">Aplicar filtros</button>
         </div>

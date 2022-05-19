@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="container mt-3">
-        @include('partials.validation-errors')
         <h3>Crear fórmula</h3>
         <div class="mt-1 row border-top border-bottom color-border-muted p-3">
             <form 

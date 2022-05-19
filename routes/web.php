@@ -5,6 +5,7 @@ Route::view('/','home')->name('home');
 
 Route::view('/tabla-periodica', 'elementos.tabla')->name('elementos.tabla');
 Route::get('/lista-elementos', 'App\Http\Controllers\ElementosController@index')->name('elementos.lista');
+// Route::get('/lista-elementos', 'App\Http\Controllers\SeriesController@index')->name('series');
 
 
 //Route::view('/formulas','formulas.index')->name('formulas.index');
@@ -22,13 +23,15 @@ Route::get('/lista-elementos', 'App\Http\Controllers\ElementosController@index')
 //Route::resource('elementos','App\Http\Controllers\ElementosController')
 //    ->names('elementos');
  
- Route::get('usuario/{user}','App\Http\Controllers\PerfilController@index')->name('perfil.index');
+Route::get('usuario/{user}','App\Http\Controllers\PerfilController@index')->name('perfil.index');
+Route::get('usuario/{user}/formulas','App\Http\Controllers\PerfilController@index')->name('perfil.formulas');
+Route::get('usuario/{user}/formulas-favoritas','App\Http\Controllers\PerfilController@index')->name('perfil.fav');
 
 Route::resource('formulas-guardadas','App\Http\Controllers\FavoritosController')
     ->names('favorito');
 
-
-Route::post('ajaxFavourite','App\Http\Controllers\FormulasController@addToFavourites');
+Route::post('/formula/favorita','App\Http\Controllers\FormulasController@addToFavourites');
+Route::post('/formula/favorita/delete','App\Http\Controllers\FormulasController@deleteFavourites');
 
 Route::resource('formulas','App\Http\Controllers\FormulasController')
     ->names('formulas')
@@ -38,6 +41,7 @@ Route::get('formulas/categoria/{categoria}','App\Http\Controllers\CategoriasCont
 
 Route::view('configuracion/perfil','user.perfil')->name('conf.perfil');
 Route::post('configuracion/perfil','App\Http\Controllers\UsersController@upload')->name('user.upload');
+
 
 Route::view('configuracion/cuenta','user.cuenta')->name('conf.cuenta');
 Route::post('configuracion/cuenta','App\Http\Controllers\UsersController@updateUser')->name('user.updateUser');

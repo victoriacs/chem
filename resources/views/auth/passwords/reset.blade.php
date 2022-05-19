@@ -8,7 +8,7 @@
 
         <div class="mb-3">
             <label for="email" class=" col-form-label"> CORREO ELECTRÓNICO </label>
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+            <input maxlength="100" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
                 value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
             @error('email')
@@ -20,7 +20,7 @@
 
         <div class="mb-3">
             <label for="password" class="col-form-label">CONTRASEÑA</label>
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"
+            <input maxlength="100" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"
                 required autocomplete="new-password">
             @error('password')
                 <span class="invalid-feedback" role="alert">
@@ -31,7 +31,7 @@
 
         <div class="mb-3">
             <label for="password-confirm" class="col-form-label">CONFIRMA LA CONTRASEÑA</label>
-            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
+            <input maxlength="100" id="password-confirm" type="password" class="form-control" name="password_confirmation" required
                 autocomplete="new-password">
         </div>
 

@@ -51,7 +51,13 @@
                                         {{ $item->nombre_comun }}
                                     </a></span>
                                <a href="{{ route('categorias.show', $item->categoria) }}"><span class="badge rounded-pill bg-secondary ml-1 mb-1">{{ $item->categoria->nombre }}</span></a>
-                               <div class="ms-3"><a id="fav" href="#"><i class="fa-solid fa-heart"></i></a></div>
+                               @auth
+                               @if ($item->isFavorited($item->id))
+                                    <div class="ms-3"><a id="{{$item->id}}" class="unfav"><i class="bi bi-heart-fill"></i></a></div>
+                               @else
+                                    <div class="ms-3"><a id="{{$item->id}}" class="fav"><i class="bi bi-heart"></i></a></div>
+                               @endif
+                               @endauth
                         </div>
                         <div>
                             <p class="text-truncate mb-2">

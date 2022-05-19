@@ -9,7 +9,7 @@ class Categoria extends Model
 {
     use HasFactory;
 
-    public function formulas()
+    public function formula()
     {
         return $this->hasMany(Formula::class, 'tipo');
     }

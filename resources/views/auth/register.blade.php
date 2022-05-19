@@ -7,7 +7,7 @@
     {{-- NAME --}}
     <div class="mb-3">
         <label for="name" class="form-label">NOMBRE</label>
-        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+        <input maxlength="30" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
             value="{{ old('name') }}" required autocomplete="name" autofocus>
         @error('name')
             <span class="invalid-feedback" role="alert">
@@ -19,7 +19,7 @@
     {{-- USER --}}
     <div class="mb-3">
         <label for="user" class="form-label">USUARIO</label>
-        <input id="user" type="text" class="form-control @error('user') is-invalid @enderror" name="user"
+        <input maxlength="20" id="user" type="text" class="form-control @error('user') is-invalid @enderror" name="user"
             value="{{ old('user') }}" required autocomplete="user" autofocus>
 
         @error('user')
@@ -32,7 +32,7 @@
     {{-- EMAIL --}}
     <div class="mb-3">
         <label for="email" class="form-label">CORREO ELECTRÓNICO</label>
-        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+        <input maxlength="100" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
             value="{{ old('email') }}" required autocomplete="email">
 
         @error('email')
@@ -45,7 +45,7 @@
     {{-- PASSWORD --}}
     <div class="mb-3">
         <label for="password" class="form-label">CONTRASEÑA</label>
-        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"
+        <input maxlength="100" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"
             required autocomplete="new-password">
 
         @error('password')
@@ -58,7 +58,7 @@
     {{-- PASSWORD CONFIRM --}}
     <div class="mb-3">
         <label for="password-confirm" class="form-label">CONFIRMA LA CONTRASEÑA</label>
-        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
+        <input maxlength="100" id="password-confirm" type="password" class="form-control" name="password_confirmation" required
             autocomplete="new-password">
     </div>
 

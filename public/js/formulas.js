@@ -6,7 +6,6 @@ document.getElementById("elemento_3").hidden = true;
 
 $("#elemento_1").on('change',function() {
     let trobat = false;
-    console.log($("#elemento_1").val());
     arraySolos.forEach(element => {
         if(element == $("#elemento_1").val()) {
             trobat = true;
@@ -21,11 +20,19 @@ $("#elemento_1").on('change',function() {
             document.getElementById("span3").hidden = true;
             document.getElementById("elemento_3").hidden = true;
         } else {
-            $("#elemento_3").val(" ");
-            document.getElementById("span2").hidden = false;
-            document.getElementById("elemento_2").hidden = false;
-            document.getElementById("span3").hidden = true;
-            document.getElementById("elemento_3").hidden = true;
+            if ($("#elemento_2").val() != " ") {
+                document.getElementById("span2").hidden = false;
+                document.getElementById("elemento_2").hidden = false;
+                document.getElementById("span3").hidden = false;
+                document.getElementById("elemento_3").hidden = false;
+            } else {
+                $("#elemento_2").val(" ");
+                $("#elemento_3").val(" ");
+                document.getElementById("span2").hidden = false;
+                document.getElementById("elemento_2").hidden = false;
+                document.getElementById("span3").hidden = true;
+                document.getElementById("elemento_3").hidden = true;
+            } 
         }
 })
 

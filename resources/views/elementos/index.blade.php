@@ -4,6 +4,9 @@
         color: black !important;
     }
 </style>
+<script src="{{ asset('js/elementos.js') }}"></script>
+<link href="{{ asset('css/elementos.css') }}" rel="stylesheet">
+
 @section('title', 'Lista de elementos')
 
 @section('content')
@@ -24,6 +27,7 @@
                         </svg>
                     </span>
                 </form>
+                
             </div>
 
             <div class="col-1 d-lg-none">
@@ -94,7 +98,7 @@
                                         <p><b>Nombre: </b>{{ $item->nombre }}</p>
                                     </li>
                                     <li>
-                                        <p><b>Serie: </b>{{ $item->serie }}</p>
+                                        <p><b>Serie: </b>{{ $item->serie->nombre }}</p>
                                     </li>
                                     <li>
                                         <p><b>Capa electrones: </b>{{ $item->electrones }}</p>

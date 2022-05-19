@@ -9,5 +9,15 @@ class FormulasFavorita extends Model
 {
     use HasFactory;
 
-    protected $table = 'formulas_favoritas';
+    protected $table = 'favorites';
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function formula()
+    {
+        return $this->belongsTo(Formula::class);
+    }
 }

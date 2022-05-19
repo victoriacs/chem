@@ -1,4 +1,13 @@
 @extends('plantillauser')
+<style>
+  form {
+    background: none !important;
+  }
+
+  input[type="file"] {
+    background: none !important;
+  }
+</style>
 
 @section('title', 'CHEM')
 
@@ -6,23 +15,25 @@
 <h4>Mi perfil</h4>
 <hr>
 <div class="row d-flex flex-row-reverse">
+    <form id="upload" action="{{ route('user.upload') }}" class="form-label" method="POST" enctype="multipart/form-data">
+        @csrf
     <div class="col-lg-3">
-        <form id="upload" action="{{ route('user.upload') }}" class="form-label" method="POST" enctype="multipart/form-data">
-            @csrf
+      <label for="name" class="form-label">FOTO DE PERFIL</label>
             <input type="file" name="image">
-    </div>
+          </div>
+          <br>
     <div class="col-lg-9">
         <label for="name" class="form-label">Nombre</label>
-        <input id="name" type="name" class="form-control @if (session('name')) is-invalid @endif" name="name"
+        <input maxlength="30" id="name" type="name" class="form-control @if (session('name')) is-invalid @endif" name="name"
             value="{{ old('name') ?? Auth::user()->name }}" required autofocus>
         <br>
 
         <label for="bio" class="form-label">Biografía</label><br>
-        <textarea id="bio" name="bio" class="form-control">{{ old('bio') ?? Auth::user()->bio }}</textarea>    
+        <textarea maxlength="120" id="bio" name="bio" class="form-control">{{ old('bio') ?? Auth::user()->bio }}</textarea>    
 
         <br>
         <label for="location" class="form-label">Localización</label>
-        <input id="location" type="name" class="form-control @if (session('location')) is-invalid @endif" name="location"
+        <input maxlength="60" id="location" type="name" class="form-control @if (session('location')) is-invalid @endif" name="location"
         value="{{ old('location') ?? Auth::user()->location }}" required>
 
         <br>

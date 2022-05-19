@@ -37,8 +37,8 @@
                         {{ Auth::user()->user }}</a>
                     <ul class="dropdown">
                       <li><a href="{{ route('perfil.index', Auth::user()->user) }}" class="nav-link">Mi perfil</a></li>
-                      <li class="d-none d-lg-block"><a href="{{ route('perfil.index', Auth::user()->user) }}" class="nav-link">Mís fórmulas</a></li>
-                      <li class="d-none d-lg-block"><a href="{{ route('elementos.lista') }}" class="nav-link">Fórmulas favoritas</a></li>
+                      <li class="d-none d-lg-block"><a href="{{ route('perfil.formulas', Auth::user()->user) }}" class="nav-link">Mís fórmulas</a></li>
+                      <li class="d-none d-lg-block"><a href="{{ route('perfil.fav', Auth::user()->user) }}" class="nav-link">Fórmulas favoritas</a></li>
                       <li class="d-none d-lg-block"><a href="{{ route('formulas.create') }}" class="nav-link">Crear fórmula</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a href="{{ route('conf.cuenta') }}" class="nav-link">Configuración</a></li>

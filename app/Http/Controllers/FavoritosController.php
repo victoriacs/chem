@@ -3,30 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Formula;
-use App\Models\FormulasFavorita;
 use Illuminate\Http\Request;
+use App\Models\FormulasFavorita;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
 class FavoritosController extends Controller
 {
-    /**
-     * FavouritesController constructor.
-     * Initialise the auth middleware used to
-     * secure the Favourites routes.
-     *
-     */
+
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
-     * Grab the letting id and toggle the favourites button
-     * find the letting object and record the activity.
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws FavouriteNotFoundException
+     * Guarda en la tabla las fórmulas favoritas del usuario
+     * @param Request $request
+     * 
+     * @return array
      */
-    public function store()
+    public function store(Request $request)
     {
         $user = auth()->user();
         $formulaId = Formula::get('formula_id');
@@ -39,13 +36,12 @@ class FavoritosController extends Controller
 
         $formulaFav->save();
     }
+
     /**
-     * Grab the lettingId and detach it from the likes and then find the Letting
-     * and record the activity.
-     *
-     * @param $lettingId
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws FavouriteNotFoundException
+     * Quita de la tabla las fórmulas favoritas del usuario
+     * @param mixed $formulaId
+     * 
+     * @return array
      */
     public function destroy($formulaId)
     {

@@ -18,11 +18,21 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Muestra la configuración de la cuenta
+     * @return array
+     */
     public function index()
     {
         return view('user.cuenta');
     }
 
+    /**
+     * Edita la información personal de la cuenta (foto de perfil, nombre, biografía...)
+     * @param Request $request
+     * 
+     * @return array
+     */
     public function upload(Request $request)
     {
         return $request;
@@ -49,6 +59,10 @@ class UsersController extends Controller
         return redirect()->route('user.upload');
     }
 
+    /**
+     * Elimina el usuario
+     * @return array
+     */
     public function destroy()
     {
         $id = Auth::user()->id;
@@ -57,6 +71,12 @@ class UsersController extends Controller
         return redirect()->route('home');
     }
 
+    /**
+     * Edita la configuración del usuario (nombre de usuario, correo y contraseña)
+     * @param Request $request
+     * 
+     * @return array
+     */
     public function updateUser(Request $request)
     {
         //  return $request;
@@ -81,11 +101,11 @@ class UsersController extends Controller
             $user = Auth::user();
             $user->password = bcrypt($request->get('newPwd'));
             $user->save();
-            return redirect()->back()->with("success", "Password changed successfully !");
+            return redirect()->back()->with("success", "Contraseña cambiada correctamente.");
 
         } else if ($request->has('user')) {
             $this->validate($request, [
-                'user' => 'required|string|min:3'
+                'user' => 'required|string|min:3|max:20|regex:/^\S*$/u'
             ]);
 
             $users = User::where('user', '=', $request->get('user'))->first();
@@ -93,7 +113,7 @@ class UsersController extends Controller
                 $user = Auth::user();
                 $user->user = $request->get('user');
                 $user->save();
-                return redirect()->back()->with("succes", "USER CAMBIADO.");
+                return redirect()->back()->with("success", "Usuario cambiado correctamente.");
             } else { // si existe
                 if($request->get('user') == Auth::user()->user) {
                     return redirect()->back();
@@ -111,7 +131,7 @@ class UsersController extends Controller
                 $user = Auth::user();
                 $user->email = $request->get('email');
                 $user->save();
-                return redirect()->back()->with('succes','CORREO CAMBIADO.');
+                return redirect()->back()->with('success','Correo cambiado correctamente..');
             } else {
                 return redirect()->back()
                 ->with('email','Este correo electrónico ya está en uso.')

@@ -1,17 +1,32 @@
 <script defer src="{{ asset('js/formulas.js') }}"></script>
 
 @csrf
-<label for="nombre_comun" class="form-label">NOMBRE COMÚN</label>
-<input type="text" class="form-control" name="nombre_comun" value={{ old('nombre_comun', $formula->nombre_comun) }}>
+<label for="nombre_comun" class="form-label">NOMBRE COMÚN <span class="text-danger">*</span></label>
+<input maxlength="45" type="text" class="form-control @error('nombre_comun') is-invalid @enderror" name="nombre_comun" value={{ old('nombre_comun', $formula->nombre_comun) }}>
+@error('nombre_comun')
+<span class="invalid-feedback" role="alert">
+    <strong>{{ $message }}</strong>
+</span>
+@enderror
 <br>
-<label for="descripcion" class="form-label">DESCRIPCIÓN</label>
-<textarea class="form-control" name="descripcion" id="descripcion">{{ old('descripcion', $formula->descripcion) }}</textarea>
+<label for="descripcion" class="form-label">DESCRIPCIÓN <span class="text-danger">*</span></label>
+<textarea  maxlength="150" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" id="descripcion">{{ old('descripcion', $formula->descripcion) }}</textarea>
+@error('descripcion')
+<span class="invalid-feedback" role="alert">
+    <strong>{{ $message }}</strong>
+</span>
+@enderror
 <br>
-<label for="nombre_sistematico" class="form-label">NOMBRE SISTEMÁTICO</label>
-<input type="text" class="form-control" name="nombre_sistematico"  value={{ old('nombre_sistematico', $formula->nombre_sistematico) }}>
+<label for="nombre_sistematico" class="form-label">NOMBRE SISTEMÁTICO <span class="text-danger">*</span></label>
+<input maxlength="45" type="text" class="form-control @error('nombre_sistematico') is-invalid @enderror" name="nombre_sistematico"  value={{ old('nombre_sistematico', $formula->nombre_sistematico) }}>
+@error('nombre_sistematico')
+<span class="invalid-feedback" role="alert">
+    <strong>{{ $message }}</strong>
+</span>
+@enderror
 <br>
-<label for="tipo" class="form-label">TIPO</label>
-<select id="tipo" name="tipo" class="form-select mb-3" aria-label="Selecció de tipo">
+<label for="tipo" class="form-label">TIPO <span class="text-danger">*</span></label>
+<select id="tipo" name="tipo" class="form-select @error('tipo') is-invalid @enderror" aria-label="Selecció de tipo">
     <option active></option>
     @foreach($categorias as $id => $name)
     <option value="{{ $id }}"
@@ -19,10 +34,15 @@
     {{ $name }}</option>
     @endforeach
 </select>
-<label class="form-label">FÓRMULA</label>
+@error('tipo')
+<span class="invalid-feedback" role="alert">
+    <strong>{{ $message }}</strong>
+</span>
+@enderror
+<label class="form-label mt-3">FÓRMULA <span class="text-danger">*</span></label>
     <div class="row d-flex align-items-center">
         <div class="col-4">
-            <select id="elemento_1" name="elemento_1" class="form-select mb-3" aria-label="Selección de tipo">
+            <select id="elemento_1" name="elemento_1" class="form-select @error('elemento_1') is-invalid @enderror" aria-label="Selección de tipo">
                 <option value=" " active></option>
                 @foreach($elementos as $elemento)
                 <option value="{{ $elemento->simbolo }}"
@@ -30,6 +50,11 @@
                 {{ $elemento->simbolo }}</option>
                 @endforeach
             </select>
+            @error('elemento_1')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
         <div class="col-4 d-flex justify-content-center">
             <span id="span2" class="me-4 mt-1">+</span> 

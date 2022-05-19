@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="container mt-3">
-        @include('partials.validation-errors')
         <div class="mt-1 row border-top border-bottom color-border-muted p-3">
             <form method="POST" enctype="multipart/form-data" action="{{ route('formulas.update', $formula) }}">
                 @method('PATCH')

@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class CategoriasController extends Controller
 {
+    /**
+     * Muestra las fórmulas por categoria
+     * @param Categoria $categoria
+     * @param Request $request
+     * 
+     * @return array
+     */
     public function show(Categoria $categoria, Request $request)
     {
         $busqueda = trim($request->get('busqueda'));

@@ -12,7 +12,7 @@
                             <h1>Recuperación de contraseña</h1>
                         <div class="mb-3">
                             <label for="email" class="form-label">CORREO ELECTRÓNICO</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input maxlength="100" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">

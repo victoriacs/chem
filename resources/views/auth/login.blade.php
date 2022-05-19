@@ -3,26 +3,26 @@
 @section('content')
 <form method="POST" action="{{ route('login') }}">
     @csrf
+    
     <h1>Iniciar sesión</h1>
     <div class="mb-3">
         <label for="user" class="form-label">CORREO ELECTRÓNICO O USUARIO</label>
-        <input id="user" type="user" class="form-control @error('user') is-invalid @enderror" name="user" value="{{ old('user') }}" required autofocus>
-
-        @error('user')
+        <input maxlength="20" id="user" type="user" class="form-control  @if (session('error')) is-invalid @endif" name="user" value="{{ old('user') }}" required autofocus>
+        @if (session('error'))
         <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
+            <strong>{{ session('error') }}</strong>
         </span>
-        @enderror
+        @endif
     </div>
 
     <div class="mb-3">
         <label for="password" class="form-label">CONTRASEÑA</label>
-        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-        @error('password')
+        <input maxlength="100" id="password" type="password" class="form-control @if (session('error')) is-invalid @endif" name="password" required autocomplete="current-password">
+        @if (session('error'))
         <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
+            <strong>{{ session('error') }}</strong>
         </span>
-        @enderror
+        @endif
 
         <div id="help-pswd" class="form-text">
             <a href="{{ route('password.request') }}">¿Has olvidado la contraseña?</a>
