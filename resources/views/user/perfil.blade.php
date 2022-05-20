@@ -12,6 +12,27 @@
 @section('title', 'CHEM')
 
 @section('contentUser')
+<style>
+  .toast-success {
+      background-color: rgb(32, 168, 32);
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+  </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
+   <script>
+       $(document).ready(function() {
+           toastr.options.timeOut = 10000;
+           @if (Session::has('error'))
+               toastr.error('{{ Session::get('error') }}');
+           @elseif(Session::has('success'))
+               toastr.success('{{ Session::get('success') }}');
+           @endif
+       });
+
+   </script>
 <h4>Mi perfil</h4>
 <hr>
 <div class="row d-flex flex-row-reverse">
@@ -30,11 +51,6 @@
 
         <label for="bio" class="form-label">Biografía</label><br>
         <textarea maxlength="120" id="bio" name="bio" class="form-control">{{ old('bio') ?? Auth::user()->bio }}</textarea>    
-
-        <br>
-        <label for="location" class="form-label">Localización</label>
-        <input maxlength="60" id="location" type="name" class="form-control @if (session('location')) is-invalid @endif" name="location"
-        value="{{ old('location') ?? Auth::user()->location }}" required>
 
         <br>
     </form>

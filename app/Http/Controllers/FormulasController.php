@@ -67,7 +67,7 @@ class FormulasController extends Controller
     {
         $this->validate($request, [
             'nombre_comun' => 'required|string|min:3|regex:/^\S*$/u',
-            'descripcion' => 'required|string|max:150|regex:/^\S*$/u',
+            'descripcion' => 'required|string|max:350',
             'nombre_sistematico' => 'required|string|min:3',
             'tipo' => 'required'
         ]);

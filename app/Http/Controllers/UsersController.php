@@ -35,28 +35,34 @@ class UsersController extends Controller
      */
     public function upload(Request $request)
     {
-        return $request;
-        $this->validate($request, [
-            'name' => 'required|string|min:2|max:20',
-            'bio' => 'string|max:120',
-            'location' => 'string|max:45'
-        ]);
-        
-        $user = Auth::user();
-
         if ($request->hasFile('image')) {
+            $this->validate($request, [
+            	'image' => 'image'
+        	]);
             $filename = $request->image->getClientOriginalName();
             $request->image->storeAs('images', $filename, 'public');
             Auth()->user()->update(['image' => $filename]);
         }
 
-        Auth()->user()->update([
-            'name' => $request->name,
-            'bio' => $request->bio,
-            'location' => $request->location
-        ]);
+        if ($request->name) {
+            $this->validate($request, [
+               'name' => 'required|string|min:2|max:20'
+           ]);
+           Auth()->user()->update([
+               'name' => $request->name
+           ]);  
+       };
+       
+       if ($request->bio) {
+               $this->validate($request, [
+               'bio' => 'string|max:120',
+           ]);
+           Auth()->user()->update([
+               'bio' => $request->bio
+           ]);
+       };
     
-        return redirect()->route('user.upload');
+        return redirect()->route('user.upload')->with('success','Información actualizada correctamente.');
     }
 
     /**
@@ -83,7 +89,7 @@ class UsersController extends Controller
         if ($request->has('newPwd') || $request->has('confirmNewPwd') || $request->has('currentPwd')) {
             $this->validate($request, [
                 'currentPwd' => 'required',
-                'newPwd' => 'required|string|min:8',
+                'newPwd' => 'required|string|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/',
                 'confirmNewPwd' => 'required|same:newPwd'
             ]);
 
@@ -105,7 +111,7 @@ class UsersController extends Controller
 
         } else if ($request->has('user')) {
             $this->validate($request, [
-                'user' => 'required|string|min:3|max:20|regex:/^\S*$/u'
+                'user' => 'required|string|min:3|regex:/^\S*$/u'
             ]);
 
             $users = User::where('user', '=', $request->get('user'))->first();

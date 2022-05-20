@@ -1,6 +1,6 @@
 <div class="card-body">
     <form>
-        <h2>Metales</h2>
+        <h5>Metales</h5>
         @foreach ($seriesMetales as $item)
         <label class="form-check ps-5">
             <input name="series[]" class="form-check-input" type="checkbox"
@@ -10,7 +10,7 @@
             </span>
         </label>
         @endforeach
-        <h2>Otros</h2>
+        <h5>Otros</h5>
         @foreach ($seriesOtros as $item)
         <label class="form-check ps-5">
             <input name="series[]" class="form-check-input" type="checkbox"
@@ -20,7 +20,7 @@
             </span>
         </label>
         @endforeach
-        <h2>No metal</h2>
+        <h5>No metal</h5>
         @foreach ($seriesNoMetales as $item)
         <label class="form-check ps-5">
             <input name="series[]" class="form-check-input" type="checkbox"

@@ -27,18 +27,10 @@
                     </div>
                     <div class="col-12">
                         @if ($user->bio)
-                            <p>{{ $user->bio }}</p>
+                            <p class="text-break">{{ $user->bio }}</p>
                         @endif
                         @if ($user == Auth::user())
                             <a class="btn btn-primary btn-block btn-xs my-2" href="{{ route('conf.perfil') }}">Editar</a>
-                        @endif
-                        @if ($user->location)
-                            <div class="align-items-center d-flex">
-                                <span> <i class="material-icons">location_on</i></span>
-                                <span class="p">{{ $user->location }}</span>
-                            </div>
-                        @endif
-                        @if ($user->birthday)
                         @endif
                     </div>
                 </div>

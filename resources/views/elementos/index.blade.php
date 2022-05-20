@@ -60,9 +60,6 @@
                 <aside>
                     <div class="card">
                         <article class="card-group-item">
-                            <header class="card-header">
-                                <h3 class="title text-center">Series</h3>
-                            </header>
                             <div class="filter-content">
                                 @include('partials.series')
                             </div>

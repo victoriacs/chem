@@ -24,14 +24,13 @@ class ElementosController extends Controller
         $series = $request->get('series');
 
         if ($request->get('busqueda')) {
-            $elementos = Elemento::where("nombre", "LIKE", "%{$request->get('busqueda')}%")->paginate(9);
+            $elementos = Elemento::where("nombre", "LIKE", "%{$request->get('busqueda')}%")->paginate(14);
         } else if ($request->get('series')) {
-            $elementos = Elemento::whereIn('serie_id', $series)->paginate(9);
-                // dd($elementos);
+            $elementos = Elemento::whereIn('serie_id', $series)->paginate(14);
         } else if ($request->get('busqueda') && $request->get('series')) {
-            $elementos = Elemento::where("nombre", "LIKE", "%{$request->get('busqueda')}%")->whereIn('serie_id', $series)->paginate(9);
+            $elementos = Elemento::where("nombre", "LIKE", "%{$request->get('busqueda')}%")->whereIn('serie_id', $series)->paginate(14);
         } else if (!$request->get('busqueda') && !$request->get('series')) {
-            $elementos = Elemento::paginate(8);
+            $elementos = Elemento::paginate(14);
         }
 
         return view('elementos.index',  compact('seriesMetales', 'seriesOtros', 'seriesNoMetales', 'elementos', 'busqueda', 'series'));

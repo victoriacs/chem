@@ -56,7 +56,7 @@
 
             <h5>Descripción</h5>
             <div class="col-12">
-                <p style="color: black;">{{ $formula->descripcion }}</p>
+                <p class="text-break" style="color: black;">{{ $formula->descripcion }}</p>
             </div>
 
             <h5>Nombre sistemático</h5>

@@ -10,7 +10,7 @@
 @enderror
 <br>
 <label for="descripcion" class="form-label">DESCRIPCIÓN <span class="text-danger">*</span></label>
-<textarea  maxlength="150" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" id="descripcion">{{ old('descripcion', $formula->descripcion) }}</textarea>
+<textarea  maxlength="350" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" id="descripcion">{{ old('descripcion', $formula->descripcion) }}</textarea>
 @error('descripcion')
 <span class="invalid-feedback" role="alert">
     <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
 @enderror
 <label class="form-label mt-3">FÓRMULA <span class="text-danger">*</span></label>
     <div class="row d-flex align-items-center">
-        <div class="col-4">
+        <div class="col-4 mb-3">
             <select id="elemento_1" name="elemento_1" class="form-select @error('elemento_1') is-invalid @enderror" aria-label="Selección de tipo">
                 <option value=" " active></option>
                 @foreach($elementos as $elemento)
