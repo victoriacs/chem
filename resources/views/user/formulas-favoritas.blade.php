@@ -29,7 +29,7 @@
                 </div>
                 <div class="f6 color-fg-muted mt-2">
                     Creado por: <a href="{{ route('perfil.index', $item->user->user) }}">
-                        {{ $item->user->user }}</a>
+                        {{ $item->formula->user->user }}</a>
                 </div>
             </div>
         </li>
